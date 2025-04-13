@@ -102,7 +102,8 @@ function AboutPageContent() {
         </div>
 
         {/* 公司简介部分 - 简约日式设计 */}
-        <section className="py-20 bg-white relative">
+      </section>
+      <section className="py-20 bg-white relative">
           {/* 背景装饰 */}
           <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-gray-50 to-transparent"></div>
           <div className="absolute -left-32 top-1/4 w-64 h-64 bg-primary/3 rounded-full filter blur-3xl"></div>
@@ -266,7 +267,7 @@ function AboutPageContent() {
                   </div>
                 </div>
               </motion.div>
-            </div>
+            </motion.div>
             
             {/* 底部装饰元素 */}
             <div className="flex items-center justify-center mt-16">
