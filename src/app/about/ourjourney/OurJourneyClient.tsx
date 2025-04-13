@@ -1,9 +1,13 @@
+"use client";
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { Suspense } from 'react';
-import OurJourneyClient from './OurJourneyClient';
+import { useSearchParams } from 'next/navigation';
 
-function OurJourneyPageContent() {
+function OurJourneyContent() {
+  const searchParams = useSearchParams();
+  
   return (
     <>
       <div className="crumbsWrap bg-gray-100 py-2">
@@ -63,8 +67,8 @@ function OurJourneyPageContent() {
               <div className="timeline-content w-full md:w-3/4">
                 <h4 className="text-xl font-bold text-primary mb-2">Contributions to TPS and TPM</h4>
                 <p className="mb-4">Our legendary consultant Shigeo Shingo worked with Toyota Motor Corporation and developed SMED (Single Minute Exchange of Die), one of the important methods of TPS (Toyota Production System).</p>
-                <p className="mb-4">Through the work on PM by our famous consultant Seiichi Nakajima with Nippondenso Co., Ltd (currently DENSO Corporation), TPM (Total Productive Maintenance) was formed.</p>
-                <p>During this period, Japanese manufacturing began its rise to global prominence, with methodologies developed by Kazami consultants playing a key role in this transformation.</p>
+                <p className="mb-4">In 1971, we launched TPM (Total Productive Maintenance) methodology, which was adopted by Nippondenso.</p>
+                <p>These innovations helped establish Japan's reputation for manufacturing excellence and efficiency.</p>
               </div>
             </div>
 
@@ -134,17 +138,10 @@ function OurJourneyPageContent() {
   );
 }
 
-export default function OurJourneyPage() {
+export default function OurJourneyClient() {
   return (
     <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
-      <OurJourneyClient>
-        <OurJourneyPageContent />
-      </OurJourneyClient>
+      <OurJourneyContent />
     </Suspense>
   );
 }
-
-export const metadata = {
-  title: 'Our Journey | Kazami Global',
-  description: 'Learn about Kazami\'s journey as Japan\'s oldest management consulting firm, founded in 1942.',
-};
