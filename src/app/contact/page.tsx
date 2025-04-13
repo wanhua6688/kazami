@@ -1,12 +1,12 @@
 "use client";
 
-import React from 'react';
+import React, { Suspense } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useLanguage } from '@/lib/language-context';
 import { translations } from '@/lib/translations';
 
-export default function ContactPage() {
+function ContactPageContent() {
   const { language } = useLanguage();
   const t = translations[language];
   
@@ -135,5 +135,13 @@ export default function ContactPage() {
         </div>
       </section>
     </div>
+  );
+}
+
+export default function ContactPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
+      <ContactPageContent />
+    </Suspense>
   );
 }

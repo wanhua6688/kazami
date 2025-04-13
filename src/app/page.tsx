@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -12,7 +12,7 @@ import { useLanguage } from '@/lib/language-context';
 import { translations } from '@/lib/translations';
 import { motion } from 'framer-motion';
 
-export default function HomePage() {
+function HomePageContent() {
   const { language } = useLanguage();
   const t = translations[language];
   const basePath = language === 'ja' ? '/ja' : '';
@@ -148,7 +148,7 @@ export default function HomePage() {
                 {/* 额外的小图 */}
                 <div className="absolute -bottom-12 -right-12 w-32 h-32 md:w-48 md:h-48 rounded-lg shadow-lg overflow-hidden border-4 border-white hidden md:block">
                   <Image
-                    src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=1970&auto=format&fit=crop"
+                    src="https://images.unsplash.com/photo-1600880292203-757bb62baf72?q=80&w=1970&auto=format&fit=crop"
                     alt="Kazami Office"
                     width={200}
                     height={200}
@@ -263,7 +263,7 @@ export default function HomePage() {
                   {index === 1 && (
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                    </svg>
+                  </svg>
                   )}
                   {index === 2 && (
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -367,5 +367,13 @@ export default function HomePage() {
         </div>
       </section>
     </>
+  );
+}
+
+export default function HomePage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
+      <HomePageContent />
+    </Suspense>
   );
 }

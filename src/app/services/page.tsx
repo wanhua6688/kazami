@@ -1,13 +1,13 @@
 "use client";
 
-import React from "react";
+import React, { Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/lib/language-context";
 import { translations } from "@/lib/translations";
 import { motion } from "framer-motion";
 
-export default function ServicesPage() {
+function ServicesPageContent() {
   const { language } = useLanguage();
   const t = translations[language];
 
@@ -737,7 +737,7 @@ export default function ServicesPage() {
         className="mb-20 pt-20 border-t border-gray-100"
       >
         <div className="text-center mb-16">
-          <span className="inline-block px-4 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full mb-4">
+          <span className="inline-block px-4 py-1 bg-primary/10 rounded-full text-primary text-sm font-medium mb-4">
             {language === "en" ? "INDUSTRY EXPERTISE" : "業界専門知識"}
           </span>
           <h3 className="text-2xl md:text-3xl font-light tracking-wide mb-6">
@@ -1343,5 +1343,13 @@ export default function ServicesPage() {
         </div>
       </section>
     </div>
+  );
+}
+
+export default function ServicesPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
+      <ServicesPageContent />
+    </Suspense>
   );
 }
