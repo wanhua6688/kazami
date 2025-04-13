@@ -1,13 +1,13 @@
 "use client";
 
-import React from 'react';
+import React, { Suspense } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useLanguage } from '@/lib/language-context';
 import { translations } from '@/lib/translations';
 import { motion } from 'framer-motion';
 
-export default function CasePage() {
+function CasePageContent() {
   const { language } = useLanguage();
   const t = translations[language];
   
@@ -559,5 +559,13 @@ export default function CasePage() {
         </div>
       </section>
     </div>
+  );
+}
+
+export default function CasePage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
+      <CasePageContent />
+    </Suspense>
   );
 }
