@@ -1,11 +1,22 @@
 "use client";
 
-import React, { Suspense } from "react";
+import React, { Suspense, ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/lib/language-context";
 import { translations } from "@/lib/translations";
 import { motion } from "framer-motion";
+import { useSearchParams } from "next/navigation";
+
+// SearchParamsWrapper 用于安全地使用 useSearchParams
+function SearchParamsWrapper() {
+  const searchParams = useSearchParams();
+  return { searchParams };
+}
+
+interface ClientProps {
+  children?: ReactNode;
+}
 
 function ServicesPageContent() {
   const { language } = useLanguage();
@@ -1346,10 +1357,23 @@ function ServicesPageContent() {
   );
 }
 
+function InnerWrapper() {
+  // 这个组件会安全地使用 useSearchParams（通过 useLanguage hook）
+  return <ServicesPageContent />;
+}
+
+function SearchParamsWrapperWithContent() {
+  return (
+    <Suspense fallback={<div>Loading params...</div>}>
+      <InnerWrapper />
+    </Suspense>
+  );
+}
+
 export default function ServicesPage() {
   return (
     <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
-      <ServicesPageContent />
+      <SearchParamsWrapperWithContent />
     </Suspense>
   );
 }

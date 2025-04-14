@@ -1,16 +1,21 @@
 "use client";
 
-import Image from 'next/image';
+import React, { Suspense, ReactNode } from 'react';
 import Link from 'next/link';
-import { Suspense, useMemo, ReactNode } from 'react';
+import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 
+// SearchParamsWrapper 用于安全地使用 useSearchParams
 function SearchParamsWrapper() {
   const searchParams = useSearchParams();
   return { searchParams };
 }
 
-function OurJourneyContent() {
+interface ClientProps {
+  children?: ReactNode;
+}
+
+function OurJourneyPageContent() {
   return (
     <>
       <div className="crumbsWrap bg-gray-100 py-2">
@@ -70,14 +75,13 @@ function OurJourneyContent() {
               <div className="timeline-content w-full md:w-3/4">
                 <h4 className="text-xl font-bold text-primary mb-2">Contributions to TPS and TPM</h4>
                 <p className="mb-4">Our legendary consultant Shigeo Shingo worked with Toyota Motor Corporation and developed SMED (Single Minute Exchange of Die), one of the important methods of TPS (Toyota Production System).</p>
-                <p className="mb-4">In 1971, we launched TPM (Total Productive Maintenance) methodology, which was adopted by Nippondenso.</p>
-                <p>These innovations helped establish Japan's reputation for manufacturing excellence and efficiency.</p>
+                <p className="mb-4">Japan Institute of Plant Maintenance (JIPM) was split from Japan Management Association in 1969 and promoted Total Productive Maintenance (TPM), which is now one of the most important management methodologies in manufacturing industry.</p>
               </div>
             </div>
 
             <div className="timeline-item flex flex-col md:flex-row gap-8">
               <div className="timeline-year w-full md:w-1/4">
-                <h3 className="text-4xl font-bold text-secondary">1980</h3>
+                <h3 className="text-4xl font-bold text-secondary">1980s</h3>
               </div>
               <div className="timeline-content w-full md:w-3/4">
                 <h4 className="text-xl font-bold text-primary mb-2">Establishment of Kazami</h4>
@@ -141,35 +145,26 @@ function OurJourneyContent() {
   );
 }
 
-interface ClientProps {
-  children?: ReactNode;
+function InnerWrapper() {
+  // 在这个组件中安全地使用 useSearchParams
+  const { searchParams } = SearchParamsWrapper();
+  // 这里可以使用 searchParams，但我们并不需要
+  
+  return <OurJourneyPageContent />;
 }
 
-export default function OurJourneyClient({ children }: ClientProps) {
-  return (
-    <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
-      <SearchParamsWrapperWithContent>
-        {children}
-      </SearchParamsWrapperWithContent>
-    </Suspense>
-  );
-}
-
-function SearchParamsWrapperWithContent({ children }: ClientProps) {
+function SearchParamsWrapperWithContent() {
   return (
     <Suspense fallback={<div>Loading params...</div>}>
-      <InnerWrapper>
-        {children}
-      </InnerWrapper>
+      <InnerWrapper />
     </Suspense>
   );
 }
 
-function InnerWrapper({ children }: ClientProps) {
-  const { searchParams } = SearchParamsWrapper();
-  
-  // 这里你可以使用 searchParams，如果需要的话
-  
-  // 如果有children就渲染children，否则渲染默认内容
-  return children || <OurJourneyContent />;
+export default function OurJourneyPageWrapper() {
+  return (
+    <Suspense fallback={<div>Loading page data...</div>}>
+      <SearchParamsWrapperWithContent />
+    </Suspense>
+  );
 }

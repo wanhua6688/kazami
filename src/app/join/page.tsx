@@ -1,11 +1,12 @@
 "use client";
 
-import React, { Suspense } from "react";
+import React, { Suspense, ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/lib/language-context";
 import { translations } from "@/lib/translations";
 import { motion } from "framer-motion";
+import { useSearchParams } from 'next/navigation';
 
 function JoinPageContent() {
   const { language } = useLanguage();
@@ -904,6 +905,32 @@ function JoinPageContent() {
     </div>
   );
 }
+// SearchParamsWrapper 用于安全地使用 useSearchParams
+function SearchParamsWrapper() {
+  const searchParams = useSearchParams();
+  return { searchParams };
+}
+
+interface ClientProps {
+  children?: ReactNode;
+}
+
+function InnerWrapper() {
+  // 在这个组件中安全地使用 useSearchParams
+  const { searchParams } = SearchParamsWrapper();
+  // 这里可以使用 searchParams，但不需要
+  
+  return <JoinPageContent />;
+}
+
+function SearchParamsWrapperWithContent() {
+  return (
+    <Suspense fallback={<div>Loading params...</div>}>
+      <InnerWrapper />
+    </Suspense>
+  );
+}
+
 export default function JoinClient() {
   return (
     <Suspense
@@ -913,7 +940,7 @@ export default function JoinClient() {
         </div>
       }
     >
-      <JoinPageContent />
+      <SearchParamsWrapperWithContent />
     </Suspense>
   );
 }

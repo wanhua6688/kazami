@@ -1,12 +1,10 @@
 "use client";
 
 import Link from 'next/link';
-import { Suspense } from 'react';
+import { Suspense, ReactNode } from 'react';
 import { useSearchParams } from 'next/navigation';
 
 function NotFoundContent() {
-  const searchParams = useSearchParams();
-  
   return (
     <div className="flex flex-col items-center justify-center min-h-[60vh] px-4 py-12">
       <h1 className="text-4xl font-bold text-primary mb-4">404</h1>
@@ -21,10 +19,36 @@ function NotFoundContent() {
   );
 }
 
+// SearchParamsWrapper 用于安全地使用 useSearchParams
+function SearchParamsWrapper() {
+  const searchParams = useSearchParams();
+  return { searchParams };
+}
+
+interface ClientProps {
+  children?: ReactNode;
+}
+
+function InnerWrapper() {
+  // 在这个组件中安全地使用 useSearchParams
+  const { searchParams } = SearchParamsWrapper();
+  // 这里可以使用 searchParams，但我们不需要
+  
+  return <NotFoundContent />;
+}
+
+function SearchParamsWrapperWithContent() {
+  return (
+    <Suspense fallback={<div>Loading params...</div>}>
+      <InnerWrapper />
+    </Suspense>
+  );
+}
+
 export default function NotFoundClient() {
   return (
     <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
-      <NotFoundContent />
+      <SearchParamsWrapperWithContent />
     </Suspense>
   );
 }

@@ -8,18 +8,19 @@ import { translations } from "@/lib/translations";
 import { useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 
-// 创建一个客户端组件来处理 useSearchParams
-function AboutPageContent() {
+// 创建一个包装组件来处理 useSearchParams
+function SearchParamsWrapper() {
+  const searchParams = useSearchParams();
+  return { searchParams };
+}
+
+interface AboutPageContentProps {
+  getLocalizedHref: (path: string) => string;
+}
+
+function AboutPageContent({ getLocalizedHref }: AboutPageContentProps) {
   const { language } = useLanguage();
   const t = translations[language];
-  const searchParams = useSearchParams();
-
-  // 创建带语言参数的链接
-  const getLocalizedHref = (path: string) => {
-    const params = new URLSearchParams(searchParams.toString());
-    params.set("lang", language);
-    return `${path}?${params.toString()}`;
-  };
 
   // 动画变体
   const fadeIn = {
@@ -271,15 +272,37 @@ function AboutPageContent() {
               <div className="w-2 h-2 bg-primary/30 rounded-full"></div>
             </div>
           </div>
+        </div>
         </section>
       </div>
     );
   }
 
+function ParamsContent() {
+  const { searchParams } = SearchParamsWrapper();
+  const { language } = useLanguage();
+  
+  const getLocalizedHref = (path: string) => {
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("lang", language); 
+    return `${path}?${params.toString()}`;
+  };
+  
+  return <AboutPageContent getLocalizedHref={getLocalizedHref} />;
+}
+
+function InnerWrapper() {
+  return (
+    <Suspense fallback={<div>Loading params...</div>}>
+      <ParamsContent />
+    </Suspense>
+  );
+}
+
 export default function AboutClient() {
   return (
     <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
-      <AboutPageContent />
+      <InnerWrapper />
     </Suspense>
   );
 }

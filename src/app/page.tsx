@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, Suspense } from 'react';
+import { useState, useEffect, Suspense, ReactNode } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -11,6 +11,7 @@ import 'swiper/css/pagination';
 import { useLanguage } from '@/lib/language-context';
 import { translations } from '@/lib/translations';
 import { motion } from 'framer-motion';
+import { useSearchParams } from 'next/navigation';
 
 function HomePageContent() {
   const { language } = useLanguage();
@@ -370,10 +371,36 @@ function HomePageContent() {
   );
 }
 
+// SearchParamsWrapper 用于安全地使用 useSearchParams
+function SearchParamsWrapper() {
+  const searchParams = useSearchParams();
+  return { searchParams };
+}
+
+interface ClientProps {
+  children?: ReactNode;
+}
+
+function InnerWrapper() {
+  // 在这个组件中安全地使用 useSearchParams
+  const { searchParams } = SearchParamsWrapper();
+  // 这里可以使用 searchParams，但不需要
+  
+  return <HomePageContent />;
+}
+
+function SearchParamsWrapperWithContent() {
+  return (
+    <Suspense fallback={<div>Loading params...</div>}>
+      <InnerWrapper />
+    </Suspense>
+  );
+}
+
 export default function HomePage() {
   return (
     <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
-      <HomePageContent />
+      <SearchParamsWrapperWithContent />
     </Suspense>
   );
 }
