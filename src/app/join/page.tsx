@@ -155,7 +155,7 @@ function JoinPageContent() {
 
         <div className="absolute inset-0 bg-gray-900/50 z-10"></div>
         <Image
-          src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=2084&auto=format&fit=crop"
+          src="/banner/b4.jpg"
           alt="Join Our Team"
           fill
           style={{ objectFit: "cover" }}
