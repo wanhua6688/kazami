@@ -27,7 +27,7 @@ function ServicesPageContent() {
       {/* Hero Section - 日式美学风格 */}
       <section className="relative w-full h-[500px] lg:h-[600px] overflow-hidden">
         <Image
-          src="https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=2069&auto=format&fit=crop"
+          src="/banner/b4.jpg"
           alt="Our Services"
           fill
           style={{ objectFit: "cover" }}
@@ -247,7 +247,7 @@ function ServicesPageContent() {
                   <span className="text-primary font-bold">01</span>
                 </div>
                 <h4 className="text-lg font-semibold mb-2">
-                  {language === "en" ? "発見" : "発見"}
+                  {language === "en" ? "Discovery" : "発見"}
                 </h4>
                 <p className="text-sm text-gray-600 max-w-[180px]">
                   {language === "en"
@@ -262,7 +262,7 @@ function ServicesPageContent() {
                   <span className="text-primary font-bold">02</span>
                 </div>
                 <h4 className="text-lg font-semibold mb-2">
-                  {language === "en" ? "設計" : "設計"}
+                  {language === "en" ? "Design" : "設計"}
                 </h4>
                 <p className="text-sm text-gray-600 max-w-[180px]">
                   {language === "en"
@@ -277,7 +277,7 @@ function ServicesPageContent() {
                   <span className="text-primary font-bold">03</span>
                 </div>
                 <h4 className="text-lg font-semibold mb-2">
-                  {language === "en" ? "実施" : "実施"}
+                  {language === "en" ? "Implementation" : "実施"}
                 </h4>
                 <p className="text-sm text-gray-600 max-w-[180px]">
                   {language === "en"
@@ -292,7 +292,7 @@ function ServicesPageContent() {
                   <span className="text-primary font-bold">04</span>
                 </div>
                 <h4 className="text-lg font-semibold mb-2">
-                  {language === "en" ? "改善" : "改善"}
+                  {language === "en" ? "Improvement" : "改善"}
                 </h4>
                 <p className="text-sm text-gray-600 max-w-[180px]">
                   {language === "en"
@@ -349,17 +349,7 @@ function ServicesPageContent() {
             {/* 卡片1 */}
             <div className="bg-white rounded-lg p-8 shadow-sm hover:shadow-md transition-all duration-300 border-l-2 border-transparent hover:border-l-primary relative group">
               <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-all duration-300">
-                <svg
-                  className="w-8 h-8 text-primary"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2h2a2 2 0 002-2z"></path>
-                </svg>
+                <span className="text-primary font-bold">01</span>
               </div>
               <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-all duration-300">
                 {language === "en" ? "Business Strategy" : "ビジネス戦略"}
@@ -374,17 +364,7 @@ function ServicesPageContent() {
             {/* 卡片2 */}
             <div className="bg-white rounded-lg p-8 shadow-sm hover:shadow-md transition-all duration-300 border-l-2 border-transparent hover:border-l-primary relative group">
               <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-all duration-300">
-                <svg
-                  className="w-8 h-8 text-primary"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
-                </svg>
+                <span className="text-primary font-bold">02</span>
               </div>
               <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-all duration-300">
                 {language === "en" ? "Digital Transformation" : "デジタル変革"}
@@ -399,17 +379,7 @@ function ServicesPageContent() {
             {/* 卡片3 */}
             <div className="bg-white rounded-lg p-8 shadow-sm hover:shadow-md transition-all duration-300 border-l-2 border-transparent hover:border-l-primary relative group">
               <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-all duration-300">
-                <svg
-                  className="w-8 h-8 text-primary"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 012 2v1a2 2 0 01-2 2h-2v4l.586-.586z"></path>
-                </svg>
+                <span className="text-primary font-bold">03</span>
               </div>
               <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-all duration-300">
                 {language === "en" ? "HR Management" : "人材管理"}
@@ -424,17 +394,7 @@ function ServicesPageContent() {
             {/* 卡片4 */}
             <div className="bg-white rounded-lg p-8 shadow-sm hover:shadow-md transition-all duration-300 border-l-2 border-transparent hover:border-l-primary relative group">
               <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-all duration-300">
-                <svg
-                  className="w-8 h-8 text-primary"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h.5A2.5 2.5 0 0020.5 5.5v-.565M12 3.935V3a2 2 0 01-2-2 2 2 0 00-2 2v.065"></path>
-                </svg>
+                <span className="text-primary font-bold">04</span>
               </div>
               <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-all duration-300">
                 {language === "en" ? "Global Strategy" : "グローバル戦略"}
@@ -1066,7 +1026,7 @@ function ServicesPageContent() {
               <div className="absolute -right-16 -top-16 w-32 h-32 bg-primary/5 rounded-full transition-all duration-500 group-hover:scale-150"></div>
               <div className="relative z-10">
                 <div className="text-4xl md:text-5xl font-bold text-primary mb-2">
-                  500+
+                  <span className="text-primary font-bold">200+</span>
                 </div>
                 <p className="text-gray-600">
                   {language === "en"
@@ -1094,7 +1054,7 @@ function ServicesPageContent() {
               <div className="absolute -right-16 -top-16 w-32 h-32 bg-primary/5 rounded-full transition-all duration-500 group-hover:scale-150"></div>
               <div className="relative z-10">
                 <div className="text-4xl md:text-5xl font-bold text-primary mb-2">
-                  12+
+                  <span className="text-primary font-bold">5+</span>
                 </div>
                 <p className="text-gray-600">
                   {language === "en" ? "Years Experience" : "年の経験"}

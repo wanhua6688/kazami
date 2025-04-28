@@ -4,7 +4,7 @@ export const translations = {
   en: {
     // 首页内容
     home: {
-      companyIntro: "The Kazami Management Research Institute is dedicated to contributing to the prosperity and development of businesses through innovative management consulting services. Since its establishment in 2012, we have provided outstanding services to numerous clients across major industries in Japan.",
+      companyIntro: "The Kazami Management Research Institute is dedicated to contributing to the prosperity and development of businesses through innovative management consulting services. Since its establishment in 2020, we have provided outstanding services to numerous clients across major industries in Japan.",
       coreValues: {
         title: "Core Values",
         values: [
@@ -36,7 +36,7 @@ export const translations = {
     about: {
       companyProfile: {
         title: "Company Profile",
-        description: "In 2012, several executives from renowned consulting firms in Japan decided to join hands and start a business. They recognized the significant demand for management consulting services in the market. After years of effort and development, Kazami Management Research Institute has accumulated rich experience within Japan. Our clients span across various sectors including manufacturing, retail, financial services, and more. By providing services such as strategic planning, operational optimization, human resource management, and digital transformation, we help businesses enhance their competitiveness and sustainable development capabilities. Additionally, the institute places special emphasis on assisting Japanese companies with overseas market expansion and managing political and economic risks, aiding them in achieving success in the global market.\n\nOur team consists of experienced consultants who possess deep knowledge and extensive practical experience in their respective fields. Whether it's a startup or a large multinational corporation, we are capable of offering tailor-made solutions that meet diverse client needs. We strive to be our clients' most trusted partner, providing comprehensive support and services that enable them to stand out in competition and achieve long-term development goals."
+        description: "In 2020, several executives from renowned consulting firms in Japan decided to join hands and start a business. They recognized the significant demand for management consulting services in the market. After years of effort and development, Kazami Management Research Institute has accumulated rich experience within Japan.\n\nOur clients span across various sectors including manufacturing, retail, financial services, and more. By providing services such as strategic planning, operational optimization, human resource management, and digital transformation, we help businesses enhance their competitiveness and sustainable development capabilities. Additionally, the institute places special emphasis on assisting Japanese companies with overseas market expansion and managing political and economic risks, aiding them in achieving success in the global market.\n\nOur team consists of experienced consultants who possess deep knowledge and extensive practical experience in their respective fields. Whether it's a startup or a large multinational corporation, we are capable of offering tailor-made solutions that meet diverse client needs. We strive to be our clients' most trusted partner, providing comprehensive support and services that enable them to stand out in competition and achieve long-term development goals."
       },
       globalPerspective: {
         title: "Global Perspective",
@@ -212,7 +212,7 @@ export const translations = {
   ja: {
     // 首页内容
     home: {
-      companyIntro: "風見経営研究所は、革新的な経営コンサルティングサービスを通じて、企業の繁栄と発展に貢献することを使命としています。2012年の設立以来、私たちは日本の主要産業にわたる多くのクライアントに優れたサービスを提供してきました。",
+      companyIntro: "風見経営研究所は、革新的な経営コンサルティングサービスを通じて、企業の繁栄と発展に貢献することを使命としています。2020年の設立以来、私たちは日本の主要産業にわたる多くのクライアントに優れたサービスを提供してきました。",
       coreValues: {
         title: "コアバリュー",
         values: [
@@ -387,7 +387,7 @@ export const translations = {
     contact: {
       title: "お問い合わせ",
       email: "hr@kazamimri.com",
-      address: "東京都港区芝3丁目"
+      address: "Shiba 3-chome, minato ward, Tokyo"
     },
 
     // 加入我们页面内容

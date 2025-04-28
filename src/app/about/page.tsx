@@ -52,12 +52,12 @@ function AboutPageContent({ getLocalizedHref }: AboutPageContentProps) {
 
         <div className="absolute inset-0 bg-gray-900/30 z-10"></div>
         <Image
-          src="https://images.unsplash.com/photo-1624155805033-13d7500adc2a?q=80&w=1430&auto=format&fit=crop"
+          src="/banner/b3.jpg"
           alt="About Kazami"
           fill
           style={{ objectFit: "cover" }}
           priority
-          className="brightness-95"
+          className="brightness-95 object-cover transition-transform duration-700 hover:scale-105"
         />
 
         {/* 日式装饰边框元素 */}
@@ -127,7 +127,7 @@ function AboutPageContent({ getLocalizedHref }: AboutPageContentProps) {
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeIn}
-            className="max-w-3xl mx-auto text-center mb-20"
+            className="max-w-3xl mx-auto mb-20"
           >
             <span className="inline-block px-4 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full mb-4">
               {language === "en" ? "ABOUT KAZAMI" : "KAZAMIについて"}
@@ -135,14 +135,16 @@ function AboutPageContent({ getLocalizedHref }: AboutPageContentProps) {
             <h2 className="text-3xl md:text-4xl font-light mb-6 tracking-wide">
               {t.about.companyProfile.title}
             </h2>
-            <div className="flex items-center justify-center mb-6">
+            <div className="flex items-center mb-8">
               <div className="w-12 h-px bg-primary/30"></div>
               <div className="w-2 h-2 bg-primary/60 mx-3 rotate-45"></div>
               <div className="w-12 h-px bg-primary/30"></div>
             </div>
-            <p className="text-gray-600">
-              {t.about.companyProfile.description}
-            </p>
+            <div className="text-gray-600 space-y-6 leading-relaxed">
+              {t.about.companyProfile.description.split('\n\n').map((paragraph, index) => (
+                <p key={index} className="text-left" style={{ textIndent: '2em' }}>{paragraph}</p>
+              ))}
+            </div>
           </motion.div>
 
           {/* 公司简介内容 - 图文布局 */}
@@ -182,28 +184,28 @@ function AboutPageContent({ getLocalizedHref }: AboutPageContentProps) {
               <div className="space-y-6 text-gray-700">
                 <p>
                   {language === "en"
-                    ? "Founded in 1942, Kazami Management Research Institute has been at the forefront of management consulting in Japan and across Asia for over eight decades. Our journey began with a simple mission: to help businesses thrive through innovation and operational excellence."
-                    : "1942年に設立されたKazami経営研究所は、80年以上にわたり、日本およびアジア全域の経営コンサルティングの最前線に立ってきました。私たちの旅は、イノベーションと卓越した運用を通じてビジネスの繁栄を支援するという簡単な使命から始まりました。"}
+                    ? "Founded in 2020, Kazami Management Research Institute has been at the forefront of management consulting in Japan and across Asia for over three decades. Our journey began with a simple mission: to help businesses thrive through innovation and operational excellence."
+                    : "2020年に設立されたKazami経営研究所は、3年以上にわたり、日本およびアジア全域の経営コンサルティングの最前線に立ってきました。私たちの旅は、イノベーションと卓越した運用を通じてビジネスの繁栄を支援するという簡単な使命から始まりました。"}
                 </p>
                 <p>
                   {language === "en"
                     ? "Over the decades, we have evolved and expanded our services to meet the changing needs of businesses in an increasingly global and digital marketplace, while staying true to our Japanese heritage of precision, dedication, and continuous improvement."
-                    : "数十年にわたり、私たちはますますグローバルでデジタル化する市場環境において、企業の変化するニーズに応えるためにサービスを進化させ拡大してきました。同時に、精密さ、献身、継続的改善という日本の伝統を大切にしています。"}
+                    : "数年以上にわたり、私たちはますますグローバルでデジタル化する市場環境において、企業の変化するニーズに応えるためにサービスを進化させ拡大してきました。同時に、精密さ、献身、継続的改善という日本の伝統を大切にしています。"}
                 </p>
               </div>
 
               {/* 日式设计元素 - 时间线点缀 */}
               <div className="mt-8 flex items-center space-x-4">
                 <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary font-light">
-                  1942
+                  2020
                 </div>
                 <div className="w-32 h-px bg-gradient-to-r from-primary/50 to-primary/10"></div>
                 <div className="w-14 h-14 rounded-full bg-blue-100 flex items-center justify-center text-blue-700 font-light">
-                  1970
+                  2022
                 </div>
                 <div className="w-32 h-px bg-gradient-to-r from-blue-400/50 to-blue-400/10"></div>
                 <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary font-light">
-                  2023
+                  2025
                 </div>
               </div>
             </motion.div>

@@ -36,7 +36,7 @@ function CasePageContent() {
     {
       id: 1,
       title: language === 'en' ? 'Electronics Manufacturer - Southeast Asian Expansion' : '電子機器メーカー - 東南アジア展開',
-      image: 'https://images.unsplash.com/photo-1563770557117-73e8397e6015?q=80&w=1974&auto=format&fit=crop',
+      image: '/a1.png',
       category: language === 'en' ? 'Market Expansion' : '市場拡大',
       client: language === 'en' ? 'Japanese Electronics Manufacturer' : '日本の電子機器メーカー',
       duration: language === 'en' ? '8 months' : '8ヶ月',
@@ -59,7 +59,7 @@ function CasePageContent() {
     {
       id: 2,
       title: language === 'en' ? 'Financial Services - Digital Transformation' : '金融サービス - デジタルトランスフォーメーション',
-      image: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2070&auto=format&fit=crop',
+      image: '/a2.png',
       category: language === 'en' ? 'Digital Transformation' : 'デジタル変革',
       client: language === 'en' ? 'Major Regional Bank' : '大手地方銀行',
       duration: language === 'en' ? '12 months' : '12ヶ月',
@@ -196,7 +196,7 @@ function CasePageContent() {
             <div className="grid grid-cols-1 md:grid-cols-2">
               <div className="relative h-64 md:h-auto">
                 <Image 
-                  src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2070&auto=format&fit=crop"
+                  src="/a3.png"
                   alt="Digital Transformation Case" 
                   fill
                   className="object-cover"
@@ -250,17 +250,6 @@ function CasePageContent() {
                     <span className="block text-gray-500 mb-1">{language === 'en' ? 'TIME FRAME' : '期間'}</span>
                     <span className="font-semibold">12 {language === 'en' ? 'months' : 'ヶ月'}</span>
                   </div>
-                  <div>
-                    <Link 
-                      href="#financial-case-detail" 
-                      className="text-primary font-medium hover:underline flex items-center"
-                    >
-                      {language === 'en' ? 'Read More' : '詳細を見る'}
-                      <svg className="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                      </svg>
-                    </Link>
-                  </div>
                 </div>
               </div>
             </div>
@@ -306,32 +295,24 @@ function CasePageContent() {
               <motion.div
                 key={testimonial.id}
                 variants={fadeIn}
-                className="bg-white rounded-sm shadow-md overflow-hidden relative group"
+                className="bg-white rounded-sm shadow-md overflow-hidden relative group p-5"
               >
                 {/* 日式装饰边框 */}
                 <div className="absolute top-0 right-0 w-12 h-12 border-t border-r border-primary/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 <div className="absolute bottom-0 left-0 w-12 h-12 border-b border-l border-primary/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 
                 {/* 引用标记 */}
-                <div className="mb-6 text-primary/20">
+                <div className="mb-6 text-primary/20 flex">
                   <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                   </svg>
                 </div>
                 
                 <blockquote className="text-gray-700 mb-6 leading-relaxed text-sm">
-                  <p>{testimonial.quote.length > 200 ? testimonial.quote.substring(0, 200) + '...' : testimonial.quote}</p>
+                  <p style={{ textIndent: '2em' }} className="text-left">{testimonial.quote.length > 250 ? testimonial.quote.substring(0, 250) + '...' : testimonial.quote}</p>
                 </blockquote>
                 
-                <div className="flex items-center">
-                  <div className="w-12 h-12 relative rounded-full overflow-hidden mr-4 border border-gray-100">
-                    <Image
-                      src={testimonial.image}
-                      alt={testimonial.author}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
+                <div className="flex items-center mt-4 border-t border-gray-100 pt-4">
                   <div>
                     <div className="font-medium text-gray-800">{testimonial.author}</div>
                     <div className="text-sm text-gray-500">{testimonial.company}</div>
@@ -450,60 +431,7 @@ function CasePageContent() {
         </div>
       </section>
       
-      {/* 指标部分 */}
-      <section className="py-16 bg-gray-50 relative overflow-hidden">
-        <div className="absolute -right-40 top-0 w-80 h-80 bg-primary/5 rounded-full blur-3xl"></div>
-        <div className="absolute -left-40 bottom-0 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl"></div>
-        
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="max-w-6xl mx-auto"
-          >
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-              <div className="bg-white p-8 shadow-sm text-center group hover:shadow-md transition-all duration-300 relative">
-                <div className="absolute top-0 left-0 w-full h-1 bg-primary/50 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500"></div>
-                <div className="text-4xl text-primary font-light mb-2">90%</div>
-                <div className="text-sm text-gray-500 mb-2">{language === 'en' ? 'OF OUR CLIENTS' : 'のクライアント'}</div>
-                <div className="text-gray-700 font-medium">
-                  {language === 'en' ? 'Renew their partnership with us' : '当社とのパートナーシップを更新'}
-                </div>
-              </div>
-              
-              <div className="bg-white p-8 shadow-sm text-center group hover:shadow-md transition-all duration-300 relative">
-                <div className="absolute top-0 left-0 w-full h-1 bg-primary/50 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500"></div>
-                <div className="text-4xl text-primary font-light mb-2">120+</div>
-                <div className="text-sm text-gray-500 mb-2">{language === 'en' ? 'PROJECTS' : 'プロジェクト'}</div>
-                <div className="text-gray-700 font-medium">
-                  {language === 'en' ? 'Successfully delivered on time' : '時間通りに成功裏に納品'}
-                </div>
-              </div>
-              
-              <div className="bg-white p-8 shadow-sm text-center group hover:shadow-md transition-all duration-300 relative">
-                <div className="absolute top-0 left-0 w-full h-1 bg-primary/50 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500"></div>
-                <div className="text-4xl text-primary font-light mb-2">36%</div>
-                <div className="text-sm text-gray-500 mb-2">{language === 'en' ? 'AVERAGE' : '平均'}</div>
-                <div className="text-gray-700 font-medium">
-                  {language === 'en' ? 'ROI increase for our clients' : 'クライアントのROI増加'}
-                </div>
-              </div>
-              
-              <div className="bg-white p-8 shadow-sm text-center group hover:shadow-md transition-all duration-300 relative">
-                <div className="absolute top-0 left-0 w-full h-1 bg-primary/50 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500"></div>
-                <div className="text-4xl text-primary font-light mb-2">15+</div>
-                <div className="text-sm text-gray-500 mb-2">{language === 'en' ? 'YEARS' : '年'}</div>
-                <div className="text-gray-700 font-medium">
-                  {language === 'en' ? 'Of industry experience' : '業界での経験'}
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-      
+   
       {/* 行动号召部分 */}
       <section className="py-24 bg-white relative overflow-hidden">
         {/* 装饰背景元素 */}

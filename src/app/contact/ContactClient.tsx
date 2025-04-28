@@ -15,7 +15,7 @@ function ContactPageContent() {
       {/* Hero Section */}
       <section className="relative w-full h-[300px] mb-12">
         <Image
-          src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1974&auto=format&fit=crop"
+          src="/home/b4.jpg"
           alt="Contact Us"
           fill
           style={{ objectFit: 'cover' }}

@@ -468,14 +468,14 @@ function JoinPageContent() {
                 <div className="absolute bottom-0 left-0 w-12 h-12 border-b border-l border-primary/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
 
                 <div className="flex items-center mb-6">
-                  <div className="w-16 h-16 relative rounded-full overflow-hidden mr-4 border border-gray-100">
+                  {/* <div className="w-16 h-16 relative rounded-full overflow-hidden mr-4 border border-gray-100">
                     <Image
                       src={member.image}
                       alt={member.name}
                       fill
                       className="object-cover"
                     />
-                  </div>
+                  </div> */}
                   <div>
                     <div className="font-medium text-gray-800">
                       {member.name}
@@ -595,18 +595,6 @@ function JoinPageContent() {
                         </span>
                       </div>
                     </div>
-                    <button
-                      onClick={() =>
-                        (window.location.href = `mailto:${
-                          t.contact.email
-                        }?subject=${encodeURIComponent(
-                          `Application for ${position.title} Position`
-                        )}`)
-                      }
-                      className="inline-flex items-center justify-center px-4 py-2 border border-primary text-sm font-medium rounded-sm text-primary hover:bg-primary hover:text-white transition-colors"
-                    >
-                      {language === "en" ? "Apply Now" : "応募する"}
-                    </button>
                   </div>
 
                   <div className="border-t border-gray-100 pt-6">

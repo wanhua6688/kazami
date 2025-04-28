@@ -41,7 +41,7 @@ function HomePageContent() {
           <SwiperSlide>
             <div className="relative w-full h-full">
               <Image
-                src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=2071&auto=format&fit=crop"
+                src="/banner/b1.jpg"
                 alt="Kazami Management Research Institute"
                 fill
                 style={{ objectFit: 'cover' }}
@@ -53,7 +53,7 @@ function HomePageContent() {
           <SwiperSlide>
             <div className="relative w-full h-full">
               <Image
-                src="https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=2074&auto=format&fit=crop"
+                src="/banner/b2.jpg"
                 alt="Kazami Management Research Institute"
                 fill
                 style={{ objectFit: 'cover' }}
@@ -65,7 +65,7 @@ function HomePageContent() {
           <SwiperSlide>
             <div className="relative w-full h-full">
               <Image
-                src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2032&auto=format&fit=crop"
+                src="/banner/b3.jpg"
                 alt="Kazami Management Research Institute"
                 fill
                 style={{ objectFit: 'cover' }}
@@ -135,7 +135,7 @@ function HomePageContent() {
                 <div className="relative z-1 overflow-hidden shadow-2xl">
                   <div className="w-full h-full overflow-hidden rounded-lg">
                     <Image
-                      src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2070&auto=format&fit=crop"
+                      src="/home/sub.jpg"
                       alt="Kazami Team"
                       width={600}
                       height={400}
@@ -149,7 +149,7 @@ function HomePageContent() {
                 {/* 额外的小图 */}
                 <div className="absolute -bottom-12 -right-12 w-32 h-32 md:w-48 md:h-48 rounded-lg shadow-lg overflow-hidden border-4 border-white hidden md:block">
                   <Image
-                    src="https://images.unsplash.com/photo-1600880292203-757bb62baf72?q=80&w=1970&auto=format&fit=crop"
+                    src="/home/main.jpg"
                     alt="Kazami Office"
                     width={200}
                     height={200}
@@ -184,11 +184,11 @@ function HomePageContent() {
                 {/* 关键数据统计 */}
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4 my-8">
                   <div className="text-center">
-                    <div className="text-3xl md:text-4xl font-bold text-primary mb-1">10+</div>
+                    <div className="text-3xl md:text-4xl font-bold text-primary mb-1">5+</div>
                     <div className="text-sm text-gray-600">{language === 'en' ? 'Years Experience' : '年の経験'}</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-3xl md:text-4xl font-bold text-primary mb-1">200+</div>
+                    <div className="text-3xl md:text-4xl font-bold text-primary mb-1">100+</div>
                     <div className="text-sm text-gray-600">{language === 'en' ? 'Projects Completed' : '完了したプロジェクト'}</div>
                   </div>
                   <div className="text-center">

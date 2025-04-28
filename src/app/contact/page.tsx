@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Suspense } from 'react';
+import React, { Suspense, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useLanguage } from '@/lib/language-context';
@@ -10,12 +10,24 @@ function ContactPageContent() {
   const { language } = useLanguage();
   const t = translations[language];
   
+  // Form state
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+  
+  // Success message state
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  
   return (
     <div className="pt-8">
       {/* Hero Section */}
       <section className="relative w-full h-[300px] mb-12">
         <Image
-          src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1974&auto=format&fit=crop"
+          src="/banner/b4.jpg"
           alt="Contact Us"
           fill
           style={{ objectFit: 'cover' }}
@@ -74,7 +86,27 @@ function ContactPageContent() {
                 {language === 'en' ? 'Send Us a Message' : 'メッセージを送る'}
               </h3>
               
-              <form className="space-y-4">
+              <form className="space-y-4" onSubmit={(e) => {
+                e.preventDefault();
+                setIsSubmitting(true);
+                
+                // Simulate form submission delay
+                setTimeout(() => {
+                  setIsSubmitting(false);
+                  setShowSuccess(true);
+                  
+                  // Reset form after 3 seconds
+                  setTimeout(() => {
+                    setShowSuccess(false);
+                    setFormData({
+                      name: '',
+                      email: '',
+                      subject: '',
+                      message: ''
+                    });
+                  }, 3000);
+                }, 1000);
+              }}>
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
                     {language === 'en' ? 'Your Name' : 'お名前'}
@@ -84,6 +116,8 @@ function ContactPageContent() {
                     id="name"
                     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                     required
+                    value={formData.name}
+                    onChange={(e) => setFormData({...formData, name: e.target.value})}
                   />
                 </div>
                 
@@ -96,6 +130,8 @@ function ContactPageContent() {
                     id="email"
                     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                     required
+                    value={formData.email}
+                    onChange={(e) => setFormData({...formData, email: e.target.value})}
                   />
                 </div>
                 
@@ -108,6 +144,8 @@ function ContactPageContent() {
                     id="subject"
                     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                     required
+                    value={formData.subject}
+                    onChange={(e) => setFormData({...formData, subject: e.target.value})}
                   />
                 </div>
                 
@@ -120,14 +158,37 @@ function ContactPageContent() {
                     rows={5}
                     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                     required
+                    value={formData.message}
+                    onChange={(e) => setFormData({...formData, message: e.target.value})}
                   ></textarea>
                 </div>
                 
+                {/* Success message */}
+                {showSuccess && (
+                  <div className="bg-green-50 border-l-4 border-green-500 p-4 mb-4">
+                    <div className="flex items-start">
+                      <div className="flex-shrink-0">
+                        <svg className="h-5 w-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                      <div className="ml-3">
+                        <p className="text-sm font-medium text-green-800" style={{ textIndent: '0' }}>
+                          {language === 'en' ? 'Message sent successfully!' : 'メッセージが正常に送信されました！'}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+                
                 <button
                   type="submit"
-                  className="w-full py-3 px-4 bg-primary text-white font-bold rounded-md hover:bg-primary/90 transition-colors"
+                  className="w-full py-3 px-4 bg-primary text-white font-bold rounded-md hover:bg-primary/90 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
+                  disabled={isSubmitting}
                 >
-                  {language === 'en' ? 'Send Message' : 'メッセージを送信'}
+                  {isSubmitting ? 
+                    (language === 'en' ? 'Sending...' : '送信中...') :
+                    (language === 'en' ? 'Send Message' : 'メッセージを送信')}
                 </button>
               </form>
             </div>

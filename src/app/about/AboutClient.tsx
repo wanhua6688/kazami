@@ -52,12 +52,12 @@ function AboutPageContent({ getLocalizedHref }: AboutPageContentProps) {
 
         <div className="absolute inset-0 bg-gray-900/30 z-10"></div>
         <Image
-          src="https://images.unsplash.com/photo-1624155805033-13d7500adc2a?q=80&w=1430&auto=format&fit=crop"
+          src="/banner/b1.jpg"
           alt="About Kazami"
           fill
           style={{ objectFit: 'cover' }}
           priority
-          className="brightness-95"
+          className="brightness-95 object-cover transition-transform duration-700 hover:scale-105"
         />
 
         {/* 日式装饰边框元素 */}
@@ -117,7 +117,7 @@ function AboutPageContent({ getLocalizedHref }: AboutPageContentProps) {
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeIn}
-            className="max-w-3xl mx-auto text-center mb-20"
+            className="max-w-3xl mx-auto mb-20"
           >
             <span className="inline-block px-4 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full mb-4">
               {language === 'en' ? 'ABOUT KAZAMI' : 'KAZAMIについて'}
@@ -125,14 +125,16 @@ function AboutPageContent({ getLocalizedHref }: AboutPageContentProps) {
             <h2 className="text-3xl md:text-4xl font-light mb-6 tracking-wide">
               {t.about.companyProfile.title}
             </h2>
-            <div className="flex items-center justify-center mb-6">
+            <div className="flex items-center mb-8">
               <div className="w-12 h-px bg-primary/30"></div>
               <div className="w-2 h-2 bg-primary/60 mx-3 rotate-45"></div>
               <div className="w-12 h-px bg-primary/30"></div>
             </div>
-            <p className="text-gray-600">
-              {t.about.companyProfile.description}
-            </p>
+            <div className="text-gray-600 space-y-6 leading-relaxed">
+              {t.about.companyProfile.description.split('\n\n').map((paragraph, index) => (
+                <p key={index} className="text-left" style={{ textIndent: '2em' }}>{paragraph}</p>
+              ))}
+            </div>
           </motion.div>
           
           {/* 公司简介内容 - 图文布局 */}
@@ -150,11 +152,10 @@ function AboutPageContent({ getLocalizedHref }: AboutPageContentProps) {
               
               <div className="overflow-hidden rounded-sm shadow-lg relative z-1">
                 <Image 
-                  src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=2070&auto=format&fit=crop" 
+                  src="/banner/b1.jpg" 
                   alt="Kazami Office" 
-                  width={600} 
-                  height={400} 
-                  className="w-full h-auto"
+                  fill
+                  className="w-full h-auto object-cover transition-transform duration-700 hover:scale-105"
                 />
               </div>
             </motion.div>
@@ -177,11 +178,11 @@ function AboutPageContent({ getLocalizedHref }: AboutPageContentProps) {
               {/* 历史里程碑 - 日式时间轴 */}
               <div className="mt-8 space-y-2">
                 <div className="flex items-center">
-                  <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary font-light">1942</div>
+                  <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary font-light">2020</div>
                   <div className="w-32 h-px bg-gradient-to-r from-primary/50 to-primary/10"></div>
-                  <div className="w-14 h-14 rounded-full bg-blue-100 flex items-center justify-center text-blue-700 font-light">1970</div>
+                  <div className="w-14 h-14 rounded-full bg-blue-100 flex items-center justify-center text-blue-700 font-light">2022</div>
                   <div className="w-32 h-px bg-gradient-to-r from-blue-400/50 to-blue-400/10"></div>
-                  <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary font-light">2023</div>
+                  <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary font-light">2025</div>
                 </div>
               </div>
             </motion.div>
